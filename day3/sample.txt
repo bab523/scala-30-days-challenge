@@ -1,0 +1,4 @@
+Hello Spark
+This is Day 3 practice
+Learning SparkSession and SparkContext
+Running in local mode

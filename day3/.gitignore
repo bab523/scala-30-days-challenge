@@ -1,0 +1,5 @@
+day3/target/
+day3/project/target/
+day3/project/project/
+*.class
+*.log
