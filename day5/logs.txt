@@ -1,0 +1,10 @@
+INFO Starting application
+ERROR Connection timeout on server 1
+INFO User login successful
+ERROR Null pointer exception in module A
+WARN Low disk space
+ERROR Database connection failed
+INFO Processing completed
+ERROR Timeout while reading file
+INFO Application shutting down
+WARN Memory usage high
