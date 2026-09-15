@@ -1,0 +1,10 @@
+C001,Laptop,55000
+C002,Mouse,500
+C001,Keyboard,1200
+C003,Laptop,55000
+C002,Monitor,8000
+C004,Mouse,500
+C003,Headphones,1500
+C001,Monitor,8000
+C004,Keyboard,1200
+C002,Laptop,55000
