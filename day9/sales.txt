@@ -1,0 +1,10 @@
+Laptop,Electronics,55000
+Mouse,Electronics,500
+Keyboard,Electronics,1200
+Shirt,Clothing,800
+Laptop,Electronics,55000
+Jeans,Clothing,1500
+Mouse,Electronics,500
+Shoes,Clothing,2500
+Keyboard,Electronics,1200
+Jacket,Clothing,3000
