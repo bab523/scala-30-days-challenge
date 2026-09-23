@@ -1,0 +1,16 @@
+bill_id,department,month,service_type,patients,amount
+1,Cardiology,1,OPD,120,240000
+2,Cardiology,1,IPD,30,900000
+3,Cardiology,2,OPD,110,220000
+4,Cardiology,2,IPD,35,1050000
+5,Orthopedics,1,OPD,90,135000
+6,Orthopedics,1,IPD,25,1250000
+7,Orthopedics,2,IPD,28,1400000
+8,Pediatrics,1,OPD,200,200000
+9,Pediatrics,2,OPD,220,220000
+10,Emergency,1,IPD,60,480000
+11,Emergency,2,IPD,75,600000
+12,Radiology,1,OPD,150,300000
+13,Radiology,2,OPD,160,320000
+14,Cardiology,3,IPD,40,1200000
+15,Pediatrics,3,OPD,210,210000
