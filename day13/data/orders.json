@@ -1,0 +1,8 @@
+{"order_id":1,"customer_id":"C001","category":"Grocery","amount":250.5}
+{"order_id":2,"customer_id":"C002","category":"Electronics","amount":1200.0}
+{"order_id":3,"customer_id":"C001","category":"Grocery","amount":120.0}
+{"order_id":4,"customer_id":"C003","category":"Fashion","amount":799.99}
+{"order_id":5,"customer_id":"C004","category":"Electronics","amount":45000.0}
+{"order_id":6,"customer_id":"C002","category":"Grocery","amount":320.0}
+{"order_id":7,"customer_id":"C001","category":"Electronics","amount":999.0}
+{"order_id":8,"customer_id":"C003","category":"Fashion","amount":150.0}
