@@ -3,3 +3,5 @@ project/target/
 project/project/
 *.class
 *.log
+day17/target/
+day17/project/target/
