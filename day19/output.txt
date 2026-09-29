@@ -1,0 +1,121 @@
+[info] running (fork) BroadcastJoin 
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/09/29 09:43:55 WARN Utils: Your hostname, MSI resolves to a loopback address: 127.0.1.1; using 10.255.255.254 instead (on interface lo)
+26/09/29 09:43:55 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+26/09/29 09:43:55 INFO SparkContext: Running Spark version 3.5.1
+26/09/29 09:43:55 INFO SparkContext: OS info Linux, 5.15.167.4-microsoft-standard-WSL2, amd64
+26/09/29 09:43:55 INFO SparkContext: Java version 17.0.20.1
+26/09/29 09:43:55 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/09/29 09:43:56 INFO ResourceUtils: ==============================================================
+26/09/29 09:43:56 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/09/29 09:43:56 INFO ResourceUtils: ==============================================================
+26/09/29 09:43:56 INFO SparkContext: Submitted application: Day19 Broadcast Join
+26/09/29 09:43:56 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/09/29 09:43:56 INFO ResourceProfile: Limiting resource is cpu
+26/09/29 09:43:56 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/09/29 09:43:56 INFO SecurityManager: Changing view acls to: root
+26/09/29 09:43:56 INFO SecurityManager: Changing modify acls to: root
+26/09/29 09:43:56 INFO SecurityManager: Changing view acls groups to: 
+26/09/29 09:43:56 INFO SecurityManager: Changing modify acls groups to: 
+26/09/29 09:43:56 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/09/29 09:43:56 INFO Utils: Successfully started service 'sparkDriver' on port 45027.
+26/09/29 09:43:56 INFO SparkEnv: Registering MapOutputTracker
+26/09/29 09:43:56 INFO SparkEnv: Registering BlockManagerMaster
+26/09/29 09:43:56 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/09/29 09:43:56 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/09/29 09:43:56 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/09/29 09:43:56 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-5e63365b-fab1-4984-b203-bb411fbfe436
+26/09/29 09:43:56 INFO MemoryStore: MemoryStore started with capacity 396.0 MiB
+26/09/29 09:43:56 INFO SparkEnv: Registering OutputCommitCoordinator
+26/09/29 09:43:56 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/09/29 09:43:57 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/09/29 09:43:57 INFO Executor: Starting executor ID driver on host 10.255.255.254
+26/09/29 09:43:57 INFO Executor: OS info Linux, 5.15.167.4-microsoft-standard-WSL2, amd64
+26/09/29 09:43:57 INFO Executor: Java version 17.0.20.1
+26/09/29 09:43:57 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/09/29 09:43:57 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@2938127d for default.
+26/09/29 09:43:57 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 45399.
+26/09/29 09:43:57 INFO NettyBlockTransferService: Server created on 10.255.255.254:45399
+26/09/29 09:43:57 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/09/29 09:43:57 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.255.255.254, 45399, None)
+26/09/29 09:43:57 INFO BlockManagerMasterEndpoint: Registering block manager 10.255.255.254:45399 with 396.0 MiB RAM, BlockManagerId(driver, 10.255.255.254, 45399, None)
+26/09/29 09:43:57 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.255.255.254, 45399, None)
+26/09/29 09:43:57 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.255.255.254, 45399, None)
+Transactions (large): 2000000 rows
+Branches (small): 5 rows
+=== Broadcast join plan (look for BroadcastHashJoin, no Exchange on the big side) ===
+== Physical Plan ==
+*(1) Project [branch_id#19, txn_id#18L, amount#20, branch_name#11, state#12]
++- *(1) BroadcastHashJoin [branch_id#19], [branch_id#10], Inner, BuildRight, false
+   :- *(1) Filter isnotnull(branch_id#19)
+   :  +- *(1) Project [id#16L AS txn_id#18L, cast(((id#16L % 5) + 1) as int) AS branch_id#19, cast((rand(42) * 10000.0) as int) AS amount#20]
+   :     +- *(1) Range (1, 2000001, step=1, splits=12)
+   +- BroadcastExchange HashedRelationBroadcastMode(List(cast(input[0, int, false] as bigint)),false), [plan_id=71]
+      +- LocalTableScan [branch_id#10, branch_name#11, state#12]
+
+
+=== Broadcast join result (sample) ===
++---------+------+------+--------------+-----------+
+|branch_id|txn_id|amount|   branch_name|      state|
++---------+------+------+--------------+-----------+
+|        2|     1|  6191|  Pune Central|Maharashtra|
+|        3|     2|  5096|   Delhi North|      Delhi|
+|        4|     3|  8325|   Mumbai West|Maharashtra|
+|        5|     4|  2632| Chennai South| Tamil Nadu|
+|        1|     5|  6702|Hyderabad Main|  Telangana|
++---------+------+------+--------------+-----------+
+only showing top 5 rows
+
+=== Sort merge join plan (look for SortMergeJoin, Exchange, Sort) ===
+== Physical Plan ==
+*(4) Project [branch_id#19, txn_id#18L, amount#20, branch_name#11, state#12]
++- *(4) SortMergeJoin [branch_id#19], [branch_id#10], Inner
+   :- *(2) Sort [branch_id#19 ASC NULLS FIRST], false, 0
+   :  +- Exchange hashpartitioning(branch_id#19, 8), ENSURE_REQUIREMENTS, [plan_id=148]
+   :     +- *(1) Filter isnotnull(branch_id#19)
+   :        +- *(1) Project [id#16L AS txn_id#18L, cast(((id#16L % 5) + 1) as int) AS branch_id#19, cast((rand(42) * 10000.0) as int) AS amount#20]
+   :           +- *(1) Range (1, 2000001, step=1, splits=12)
+   +- *(3) Sort [branch_id#10 ASC NULLS FIRST], false, 0
+      +- Exchange hashpartitioning(branch_id#10, 8), ENSURE_REQUIREMENTS, [plan_id=142]
+         +- LocalTableScan [branch_id#10, branch_name#11, state#12]
+
+
+>>> warm-up took 420 ms
+>>> Broadcast join (count) took 183 ms
+>>> Sort merge join (count) took 1451 ms
+>>> Broadcast join (groupBy) took 979 ms
+>>> Sort merge join (groupBy) took 1514 ms
+=== Total amount per branch (2M transactions joined with branch master) ===
++---------+--------------+-----------+---------+------------+
+|branch_id|   branch_name|      state|txn_count|total_amount|
++---------+--------------+-----------+---------+------------+
+|        1|Hyderabad Main|  Telangana|   400000|  1999755644|
+|        2|  Pune Central|Maharashtra|   400000|  1998235507|
+|        3|   Delhi North|      Delhi|   400000|  1998559693|
+|        4|   Mumbai West|Maharashtra|   400000|  1998594684|
+|        5| Chennai South| Tamil Nadu|   400000|  1999012338|
++---------+--------------+-----------+---------+------------+
+
+=== Total amount per state ===
++-----------+------------+
+|      state|total_amount|
++-----------+------------+
+|Maharashtra|  3996830191|
+|  Telangana|  1999755644|
+| Tamil Nadu|  1999012338|
+|      Delhi|  1998559693|
++-----------+------------+
+
+=== Same using SQL BROADCAST hint ===
++--------------+---------+------------+
+|   branch_name|txn_count|total_amount|
++--------------+---------+------------+
+| Chennai South|   400000|  1999012338|
+|   Delhi North|   400000|  1998559693|
+|Hyderabad Main|   400000|  1999755644|
+|   Mumbai West|   400000|  1998594684|
+|  Pune Central|   400000|  1998235507|
++--------------+---------+------------+
+
+[success] elapsed time: 17 s
+[0J
