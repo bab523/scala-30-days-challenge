@@ -34,3 +34,9 @@ own partitions of the big table against that local copy. The big table is never 
 ## Scenario
 Millions of transactions joined with a small branch master: broadcast the branch master,
 so no transaction rows move across the network.
+[error] java.lang.RuntimeException: no main class detected[0J
+[0J[error] 	at scala.sys.package$.error(package.scala:28)[0J
+[0J[error] stack trace is suppressed; run last Compile / run for the full output[0J
+[0J[error] elapsed time: 2 s
+[error] (Compile / run) no main class detected[0J
+[0J[0J

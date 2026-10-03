@@ -1,6 +1,6 @@
 [error] java.lang.RuntimeException: no main class detected[0J
 [0J[error] 	at scala.sys.package$.error(package.scala:28)[0J
 [0J[error] stack trace is suppressed; run last Compile / run for the full output[0J
-[0J[error] elapsed time: 0 s
+[0J[error] elapsed time: 2 s
 [error] (Compile / run) no main class detected[0J
 [0J[0J
