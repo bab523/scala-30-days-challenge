@@ -20,3 +20,4 @@ output/
 spark-warehouse/
 metastore_db/
 derby.log
+checkpoint/
