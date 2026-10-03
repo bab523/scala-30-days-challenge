@@ -17,3 +17,6 @@ project/project/
 output/
 .bsp/
 .idea/
+spark-warehouse/
+metastore_db/
+derby.log
