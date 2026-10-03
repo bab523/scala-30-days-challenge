@@ -11,3 +11,9 @@ day18/project/target/
 day19/target/
 day19/project/target/
 day19/.bsp/
+target/
+project/target/
+project/project/
+output/
+.bsp/
+.idea/
