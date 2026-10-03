@@ -1,0 +1,6 @@
+product_id,product_name,category,unit_price
+P01,Laptop,Electronics,50000
+P02,Mouse,Accessories,500
+P03,Phone,Electronics,20000
+P04,Headphones,Accessories,2000
+P05,Tablet,Electronics,15000

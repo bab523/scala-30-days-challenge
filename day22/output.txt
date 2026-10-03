@@ -1,0 +1,154 @@
+[info] entering thin client - BEEP WHIRR
+[info] starting sbt server in the background
+[info] use 'sbt shutdown' to shutdown the server
+[info]  
+[info] welcome to sbt 2.0.7 (Ubuntu Java 17.0.20.1)
+[info] loading project definition from /root/scala-30-days-challenge/day22/project/project
+[info] loading project definition from /root/scala-30-days-challenge/day22/project
+[info] set current project to day19-broadcast-join (in build file:/root/scala-30-days-challenge/day22/)
+[info] compiling 1 Scala source to /root/scala-30-days-challenge/day22/target/out/jvm/scala-2.12.18/day19-broadcast-join/classes ...
+[info] done compiling
+[info] running (fork) Day22BatchPipeline 
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+26/10/03 18:18:17 WARN Utils: Your hostname, MSI resolves to a loopback address: 127.0.1.1; using 10.255.255.254 instead (on interface lo)
+26/10/03 18:18:17 WARN Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+26/10/03 18:18:17 INFO SparkContext: Running Spark version 3.5.1
+26/10/03 18:18:17 INFO SparkContext: OS info Linux, 5.15.167.4-microsoft-standard-WSL2, amd64
+26/10/03 18:18:17 INFO SparkContext: Java version 17.0.20.1
+26/10/03 18:18:18 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+26/10/03 18:18:18 INFO ResourceUtils: ==============================================================
+26/10/03 18:18:18 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/10/03 18:18:18 INFO ResourceUtils: ==============================================================
+26/10/03 18:18:18 INFO SparkContext: Submitted application: Day22BatchPipeline
+26/10/03 18:18:18 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/10/03 18:18:18 INFO ResourceProfile: Limiting resource is cpu
+26/10/03 18:18:18 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/10/03 18:18:18 INFO SecurityManager: Changing view acls to: root
+26/10/03 18:18:18 INFO SecurityManager: Changing modify acls to: root
+26/10/03 18:18:18 INFO SecurityManager: Changing view acls groups to: 
+26/10/03 18:18:18 INFO SecurityManager: Changing modify acls groups to: 
+26/10/03 18:18:18 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users with view permissions: root; groups with view permissions: EMPTY; users with modify permissions: root; groups with modify permissions: EMPTY
+26/10/03 18:18:18 INFO Utils: Successfully started service 'sparkDriver' on port 46203.
+26/10/03 18:18:18 INFO SparkEnv: Registering MapOutputTracker
+26/10/03 18:18:18 INFO SparkEnv: Registering BlockManagerMaster
+26/10/03 18:18:18 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/10/03 18:18:18 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/10/03 18:18:18 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/10/03 18:18:18 INFO DiskBlockManager: Created local directory at /tmp/blockmgr-f5892d23-95f9-4ed1-996e-c493079691db
+26/10/03 18:18:18 INFO MemoryStore: MemoryStore started with capacity 396.0 MiB
+26/10/03 18:18:18 INFO SparkEnv: Registering OutputCommitCoordinator
+26/10/03 18:18:19 INFO JettyUtils: Start Jetty 0.0.0.0:4040 for SparkUI
+26/10/03 18:18:19 INFO Utils: Successfully started service 'SparkUI' on port 4040.
+26/10/03 18:18:19 INFO Executor: Starting executor ID driver on host 10.255.255.254
+26/10/03 18:18:19 INFO Executor: OS info Linux, 5.15.167.4-microsoft-standard-WSL2, amd64
+26/10/03 18:18:19 INFO Executor: Java version 17.0.20.1
+26/10/03 18:18:19 INFO Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+26/10/03 18:18:19 INFO Executor: Created or updated repl class loader org.apache.spark.util.MutableURLClassLoader@934b52f for default.
+26/10/03 18:18:19 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 44633.
+26/10/03 18:18:19 INFO NettyBlockTransferService: Server created on 10.255.255.254:44633
+26/10/03 18:18:19 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/10/03 18:18:19 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.255.255.254, 44633, None)
+26/10/03 18:18:19 INFO BlockManagerMasterEndpoint: Registering block manager 10.255.255.254:44633 with 396.0 MiB RAM, BlockManagerId(driver, 10.255.255.254, 44633, None)
+26/10/03 18:18:19 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.255.255.254, 44633, None)
+26/10/03 18:18:19 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.255.255.254, 44633, None)
+Raw transactions count: 16
++------+-----------+----------+---+----------+--------------+
+|txn_id|customer_id|product_id|qty|txn_date  |payment_status|
++------+-----------+----------+---+----------+--------------+
+|T001  |C01        |P01       |1  |2025-01-05|PAID          |
+|T002  |C02        |P02       |2  |2025-01-05|PAID          |
+|T003  |C03        |P03       |1  |2025-01-06|PAID          |
+|T004  |C01        |P02       |3  |2025-01-06|PAID          |
+|T005  |C04        |P01       |1  |2025-01-07|FAILED        |
+|T006  |C02        |P04       |-1 |2025-01-07|PAID          |
+|T007  |NULL       |P01       |1  |2025-01-07|PAID          |
+|T008  |C05        |P99       |2  |2025-01-08|PAID          |
+|T009  |C03        |P03       |2  |not-a-date|PAID          |
+|T010  |C01        |P04       |1  |2025-01-08|PAID          |
+|T010  |C01        |P04       |1  |2025-01-08|PAID          |
+|T011  |C05        |P05       |4  |2025-02-01|PAID          |
+|T012  |C04        |P02       |2  |2025-02-01|PAID          |
+|T013  |C02        |P01       |1  |2025-02-02|PAID          |
+|T014  |C03        |P05       |0  |2025-02-02|PAID          |
+|T015  |C01        |P03       |2  |2025-02-03|PAID          |
++------+-----------+----------+---+----------+--------------+
+
+After removing duplicates: 15
+=== Rejected records ===
++------+-----------+----------+---+----------+--------------+----------------+
+|txn_id|customer_id|product_id|qty|txn_date  |payment_status|reject_reason   |
++------+-----------+----------+---+----------+--------------+----------------+
+|T005  |C04        |P01       |1  |2025-01-07|FAILED        |payment_not_paid|
+|T006  |C02        |P04       |-1 |2025-01-07|PAID          |invalid_qty     |
+|T007  |NULL       |P01       |1  |2025-01-07|PAID          |missing_customer|
+|T008  |C05        |P99       |2  |2025-01-08|PAID          |unknown_product |
+|T009  |C03        |P03       |2  |not-a-date|PAID          |invalid_date    |
+|T014  |C03        |P05       |0  |2025-02-02|PAID          |invalid_qty     |
++------+-----------+----------+---+----------+--------------+----------------+
+
+=== Reject reason summary ===
++----------------+-----+
+|   reject_reason|count|
++----------------+-----+
+|     invalid_qty|    2|
+| unknown_product|    1|
+|    invalid_date|    1|
+|missing_customer|    1|
+|payment_not_paid|    1|
++----------------+-----+
+
+=== Clean enriched records ===
++------+----------+-------------+---------+------------+-----------+---+-------+
+|txn_id|txn_date  |customer_name|city     |product_name|category   |qty|revenue|
++------+----------+-------------+---------+------------+-----------+---+-------+
+|T001  |2025-01-05|Amit         |Hyderabad|Laptop      |Electronics|1  |50000.0|
+|T002  |2025-01-05|Sneha        |Mumbai   |Mouse       |Accessories|2  |1000.0 |
+|T003  |2025-01-06|Rahul        |Delhi    |Phone       |Electronics|1  |20000.0|
+|T004  |2025-01-06|Amit         |Hyderabad|Mouse       |Accessories|3  |1500.0 |
+|T010  |2025-01-08|Amit         |Hyderabad|Headphones  |Accessories|1  |2000.0 |
+|T011  |2025-02-01|Karan        |Pune     |Tablet      |Electronics|4  |60000.0|
+|T012  |2025-02-01|Priya        |Bangalore|Mouse       |Accessories|2  |1000.0 |
+|T013  |2025-02-02|Sneha        |Mumbai   |Laptop      |Electronics|1  |50000.0|
+|T015  |2025-02-03|Amit         |Hyderabad|Phone       |Electronics|2  |40000.0|
++------+----------+-------------+---------+------------+-----------+---+-------+
+
+=== Daily sales by category ===
++----+-----+----------+-----------+------+----------+-------------+
+|year|month|txn_date  |category   |orders|units_sold|total_revenue|
++----+-----+----------+-----------+------+----------+-------------+
+|2025|1    |2025-01-05|Accessories|1     |2         |1000.0       |
+|2025|1    |2025-01-05|Electronics|1     |1         |50000.0      |
+|2025|1    |2025-01-06|Accessories|1     |3         |1500.0       |
+|2025|1    |2025-01-06|Electronics|1     |1         |20000.0      |
+|2025|1    |2025-01-08|Accessories|1     |1         |2000.0       |
+|2025|2    |2025-02-01|Accessories|1     |2         |1000.0       |
+|2025|2    |2025-02-01|Electronics|1     |4         |60000.0      |
+|2025|2    |2025-02-02|Electronics|1     |1         |50000.0      |
+|2025|2    |2025-02-03|Electronics|1     |2         |40000.0      |
++----+-----+----------+-----------+------+----------+-------------+
+
+=== Revenue by city ===
++---------+-------------+
+|     city|total_revenue|
++---------+-------------+
+|Hyderabad|      93500.0|
+|     Pune|      60000.0|
+|   Mumbai|      51000.0|
+|    Delhi|      20000.0|
+|Bangalore|       1000.0|
++---------+-------------+
+
+=== Read back from Parquet (only Jan 2025, partition pruning) ===
++----------+-----------+------+----------+-------------+----+-----+
+|txn_date  |category   |orders|units_sold|total_revenue|year|month|
++----------+-----------+------+----------+-------------+----+-----+
+|2025-01-05|Accessories|1     |2         |1000.0       |2025|1    |
+|2025-01-05|Electronics|1     |1         |50000.0      |2025|1    |
+|2025-01-08|Accessories|1     |1         |2000.0       |2025|1    |
+|2025-01-06|Accessories|1     |3         |1500.0       |2025|1    |
+|2025-01-06|Electronics|1     |1         |20000.0      |2025|1    |
++----------+-----------+------+----------+-------------+----+-----+
+
+Summary -> raw: 16, valid: 9, rejected: 6
+[success] elapsed time: 37 s
+[0J
