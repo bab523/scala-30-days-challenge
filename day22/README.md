@@ -19,7 +19,40 @@ own partitions of the big table against that local copy. The big table is never 
 ## When NOT to use it
 - Both tables are large (broadcasting a big table causes out-of-memory errors)
 - The "small" table keeps growing over time
-- Driver has little memory, because the small table is first collected at the driver
+# Day 22 - Batch Mini Project (E-commerce Daily Sales Pipeline)
+
+## Pipeline Flow
+Raw CSV -> Remove duplicates -> Join (customers, products) -> Validate -> Calculate revenue -> Aggregate daily -> Partitioned Parquet
+
+## Input Data (data/raw)
+- transactions.csv: raw orders (includes bad records on purpose)
+- customers.csv: customer details
+- products.csv: product details and unit price
+
+## Cleaning Rules
+Records are rejected if:
+- duplicate txn_id
+- missing or unknown customer
+- unknown product
+- qty <= 0
+- invalid date
+- payment status is not PAID
+
+## Key Decisions
+- Left join used so unknown ids are caught instead of silently dropped.
+- Rejected records saved separately in output/rejected with a reject_reason for audit.
+- Revenue = qty * unit_price.
+- Output written with partitionBy(year, month); repartition before write keeps files per folder low.
+
+## Output
+- output/daily_sales/year=YYYY/month=M/part-*.parquet
+- output/rejected/part-*.csv
+
+## How to Run
+sbt run
+
+## Result
+See output.txt for the full run log.- Driver has little memory, because the small table is first collected at the driver
 
 ## Broadcast join vs shuffle sort merge join
 | | Broadcast hash join | Shuffle sort merge join |
