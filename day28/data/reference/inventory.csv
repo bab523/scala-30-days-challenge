@@ -1,0 +1,5 @@
+item_id,item_name,item_type,capacity
+H01,Taj Residency,HOTEL,10
+H02,Sea View Inn,HOTEL,8
+F01,AI-202 Hyd-Mum,FLIGHT,12
+B01,Volvo Hyd-Blr,BUS,6
