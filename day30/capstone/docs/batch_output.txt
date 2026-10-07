@@ -1,0 +1,16 @@
+[info] welcome to sbt 1.9.9 (Ubuntu Java 17.0.20.1)
+[info] loading project definition from /root/scala-30-days-challenge/day30/capstone/project
+[info] loading settings for project capstone from build.sbt ...
+[info] set current project to capstone (in build file:/root/scala-30-days-challenge/day30/capstone/)
+[info] compiling 1 Scala source to /root/scala-30-days-challenge/day30/capstone/target/scala-2.12/classes ...
+[info] Non-compiled module 'compiler-bridge_2.12' for Scala 2.12.18. Compiling...
+[info]   Compilation completed in 14.085s.
+[error] /root/scala-30-days-challenge/day30/capstone/src/main/scala/CapstoneBatch.scala:87:52: unclosed character literal (or use " for string literal "EOF")
+[error] cat > src/main/scala/CapstoneStreaming.scala <<'EOF'
+[error]                                                    ^
+[error] /root/scala-30-days-challenge/day30/capstone/src/main/scala/CapstoneBatch.scala:93:3: Missing closing brace `}' assumed here
+[error]   def main(args: Array[String]): Unit = {
+[error]   ^
+[error] two errors found
+[error] (Compile / compileIncremental) Compilation failed
+[error] Total time: 20 s, completed Oct 7, 2026, 8:48:05 AM
